@@ -64,17 +64,16 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
 
 //  Get all Products
 exports.getAllProducts = catchAsyncError(async (req, res) => {
-    const resultPerPage = 5;
-    // const productCount = await Product.countDocuments();
-    const apiFeature = new ApiFeatures(Product.find(), req.query)
-        // .search()
-        // .filter()
-        // .pagination(resultPerPage);
-    // const products = await apiFeature.query;
-    const products = await Product.find();
-    
-    res.status(200).json({
-        success: true,
-        products
-    })
+        const resultPerPage = 5;
+        const productCount = await Product.countDocuments();
+        const apiFeature = new ApiFeatures(Product.find(), req.query)
+        .search()
+        .filter()
+        .pagination(resultPerPage);
+
+        const products = await apiFeature.query;
+        res.status(200).json({
+            success: true,
+            products
+        })
 });

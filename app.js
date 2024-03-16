@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Route imports
-const product = require("e:/WebDevlopment Practice/Mern Project (Ecommerce)/Backend/Routes/productroute");
+const product = require("./routes/productRoute.js");
 const user = require("./routes/userRoute");
 app.use("/api/v1", product);
 app.use("/api/v1", user);
